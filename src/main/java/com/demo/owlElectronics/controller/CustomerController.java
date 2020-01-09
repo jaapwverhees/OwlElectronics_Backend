@@ -1,13 +1,27 @@
 package com.demo.owlElectronics.controller;
 
 import com.demo.owlElectronics.data.CustomerRepository;
+import com.demo.owlElectronics.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
-@RequestMapping(path="/playground")
+@RestController
+@RequestMapping(path="/customer")
 public class CustomerController {
     @Autowired
-    private CustomerRepository CustomerRepository;
+    private CustomerRepository customerRepository;
+
+    //TODO For testing purposes, needs to be reviewed before production
+    @PostMapping(path="/add")
+    public @ResponseBody String addNewCustomer (@RequestBody Customer customer) {
+        customerRepository.save(customer);
+        return "Saved";
+    }
+
+    //TODO For testing purposes, needs to be reviewed before production
+    @GetMapping(path="/all")
+    public @ResponseBody Iterable<Customer> getAllCustomers() {
+        return customerRepository.findAll();
+    }
 }
+
