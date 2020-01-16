@@ -19,6 +19,7 @@ public class ProductController {
     Iterable<Product> getAllProducts() {
         return productRepository.findAll();
     }
+
     @GetMapping(value="/single/{productID}")
     public Product findByProductId(@PathVariable int productID) {
         return productRepository.findById(productID).get();

@@ -8,13 +8,11 @@ import com.demo.owlElectronics.model.Customer;
 import com.demo.owlElectronics.model.Order;
 import com.demo.owlElectronics.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path="/form")
+@CrossOrigin(origins= {"*"})
+@RequestMapping(path="/order")
 public class OrderController {
     @Autowired
     private OrderRepository orderRepository;
@@ -23,10 +21,10 @@ public class OrderController {
     @Autowired
     private ProductRepository productRepository;
 
-    @PostMapping(path="/crash")
-    public void CrashOrBurn(@RequestBody OrderDTO OrderDTO){
-        System.out.println(OrderDTO);
-    }
+//    @PostMapping(path="/crash")
+//    public void CrashOrBurn(@RequestBody OrderDTO OrderDTO){
+//        System.out.println(OrderDTO);
+//    }
     @PostMapping(path="/place")
     public void placeOrder(@RequestBody OrderDTO orderDTO){
         Customer customer = orderDTOToCustomerTransformer(orderDTO);
