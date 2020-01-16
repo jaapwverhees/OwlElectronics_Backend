@@ -10,7 +10,7 @@ import javax.persistence.Column;
 //lombok functionality that provides boilerplate functionality, in this case getters, setters, toString.
 //https://projectlombok.org/features/all
 //https://projectlombok.org/api/
-//todo review use @Data
+//TODO review use @Data
 @ToString
 @NoArgsConstructor
 public class ProductDTO {

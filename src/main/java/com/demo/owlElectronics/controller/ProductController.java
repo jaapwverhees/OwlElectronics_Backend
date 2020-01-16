@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins= {"*"}) //TODO this is a quick workaround, because it doesn't work for findByProductID. should be: origins=http://localhost:3000
 @RequestMapping(path="/products")
 public class ProductController {
+
     @Autowired
     private ProductRepository productRepository;
 
@@ -17,9 +19,8 @@ public class ProductController {
     Iterable<Product> getAllProducts() {
         return productRepository.findAll();
     }
-
-    @GetMapping(path="/single")
-    public Product findByProductId(@RequestBody int id) {
-      return productRepository.findById(id).get();
+    @GetMapping(value="/single/{productID}")
+    public Product findByProductId(@PathVariable int productID) {
+        return productRepository.findById(productID).get();
     }
 }
