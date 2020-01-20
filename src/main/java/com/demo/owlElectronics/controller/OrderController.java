@@ -23,6 +23,7 @@ public class OrderController {
 
     //TODO when a JSON with a faulty productID is Send, application will still write the customer in DataBase, but not the order. needs to be fixed
     //TODO best solution is probably try/catch.
+    //TODO frond end STUB voor bijv. betalingen.
     @PostMapping(path="/place")
     public void placeOrder(@RequestBody OrderDTO orderDTO){
         Product product = productRepository.findById(orderDTO.getProduct().getProductID()).get();
