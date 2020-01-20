@@ -1,9 +1,11 @@
 package com.demo.owlElectronics.model;
+import lombok.Data;
 import lombok.Getter;
 
 import javax.persistence.*;
 
-@Getter//Lombok functionality that provides boilerplate functionality, in this case the Getters of the model
+@Data//Lombok functionality that provides boilerplate functionality, in this case the Getters and setter of the model
+//todo review use before production
 @Entity
 @Table(name = "product")
 public class Product {
@@ -22,11 +24,12 @@ public class Product {
     @Column(nullable = false, length = 30, unique = true)
     private String productName;
 
-    @Column(nullable = false, length = 500)
+    @Lob
+    @Column(nullable = false)
     private String image;
     // @TODO must become an image, futher research on BLOB (suggestion from erik)
 
-    @Column(nullable = false, length = 600)
+    @Column(nullable = false, length = 1200)
     private String productDescription;
 
     @Column(nullable = false, length = 7)

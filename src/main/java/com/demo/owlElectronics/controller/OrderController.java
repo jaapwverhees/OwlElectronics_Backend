@@ -21,15 +21,13 @@ public class OrderController {
     @Autowired
     private ProductRepository productRepository;
 
-//    @PostMapping(path="/crash")
-//    public void CrashOrBurn(@RequestBody OrderDTO OrderDTO){
-//        System.out.println(OrderDTO);
-//    }
+    //TODO when a JSON with a faulty productID is Send, application will still write the customer in DataBase, but not the order. needs to be fixed
+    //TODO best solution is probably try/catch.
     @PostMapping(path="/place")
     public void placeOrder(@RequestBody OrderDTO orderDTO){
+        Product product = productRepository.findById(orderDTO.getProduct().getProductID()).get();
         Customer customer = orderDTOToCustomerTransformer(orderDTO);
         customer = customerRepository.save(customer);
-        Product product = productRepository.findById(orderDTO.getProduct().getProductID()).get();
         Order order = new Order();
         order.setCustomer(customer);
         order.setProduct(product);

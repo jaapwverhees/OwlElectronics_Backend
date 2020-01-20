@@ -5,6 +5,7 @@ import com.demo.owlElectronics.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+//TODO implementation of Exception en Error handling. with faulty input the Database will sometimes write incomplete records
 @RestController
 @RequestMapping(path="/customer")
 public class CustomerController {
