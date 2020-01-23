@@ -11,18 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins= {"*"})
+@CrossOrigin(origins= {"http://localhost:3000"})
 @RequestMapping(path="/order")
 public class OrderController {
-    @Autowired
+
+    @Autowired(required = true)
     private OrderRepository orderRepository;
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired
     private ProductRepository productRepository;
 
-    //TODO when a JSON with a faulty productID is Send, application will still write the customer in DataBase, but not the order. needs to be fixed
-    //TODO best solution is probably try/catch.
     //TODO frond end STUB voor bijv. betalingen.
     @PostMapping(path="/place")
     public void placeOrder(@RequestBody OrderDTO orderDTO){

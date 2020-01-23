@@ -53,7 +53,12 @@
 			<scope>runtime</scope>
 			<version>1.4.199</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 	<build>
 		<plugins>
 			<plugin>
@@ -62,5 +67,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

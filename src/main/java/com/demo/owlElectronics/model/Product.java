@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "product")
 public class Product {
+    //productDTO is not used now, maybe used in future iterations
     //@Column annotation is used to define rules for the column during generation.
     //https://javaee.github.io/javaee-spec/javadocs/javax/persistence/Column.html
     //@Id marks the variable as the primary key of the SQL table.
@@ -25,8 +26,8 @@ public class Product {
     private String productName;
 
     @Lob
-    @Column(nullable = false)
-    private String image;
+    @Column(nullable = true)
+    private byte[] image;
     // @TODO must become an image, futher research on BLOB (suggestion from erik)
 
     @Column(nullable = false, length = 1200)

@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "customer")
 public class Customer {
+    //Customer DTO is not used for now, will be used in future iterations
     //@Column annotation is used to define rules for the column during generation.
     //https://javaee.github.io/javaee-spec/javadocs/javax/persistence/Column.html
     //@Id marks the variable as the primary key of the SQL table.

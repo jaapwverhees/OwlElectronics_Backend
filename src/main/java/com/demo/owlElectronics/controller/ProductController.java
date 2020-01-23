@@ -1,10 +1,15 @@
 package com.demo.owlElectronics.controller;
 
-import com.demo.owlElectronics.DTO.ProductDTO;
 import com.demo.owlElectronics.data.ProductRepository;
 import com.demo.owlElectronics.model.Product;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 
 //TODO implementation of Exception en Error handling. with faulty input the Database will sometimes write incomplete records
 @RestController
@@ -29,105 +34,21 @@ public class ProductController {
 
     @PostMapping(path="/place")
     public void setProduct(@ModelAttribute Product product){
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        // Product product = productDTOtoProduct(productDTO);
         productRepository.save(product);
     }
 
-    public Product productDTOtoProduct(ProductDTO productDTO){
-        Product product = new Product();
-        product.setProductName(productDTO.getProductName());
-        product.setImage(productDTO.getImage());
-        product.setProductDescription(productDTO.getProductDescription());
-        product.setProductPrice(productDTO.getProductPrice());
-
-        return product;
+    @PostMapping(value = "/setphoto/{productID}")
+    public byte[] setPhoto(@PathVariable int productID, @RequestParam MultipartFile image){
+        Product product = productRepository.findById(productID).get();
+        byte[] byteArray= new byte[0];
+        try {
+            byteArray = image.getBytes();
+        } catch (IOException e) {
+            //implement error log function
+            return null;
+        }
+        product.setImage(byteArray);
+        productRepository.save(product);
+        return product.getImage();
     }
 }
