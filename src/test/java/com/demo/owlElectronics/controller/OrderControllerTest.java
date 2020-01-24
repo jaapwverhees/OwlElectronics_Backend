@@ -6,19 +6,18 @@ import com.demo.owlElectronics.DTO.ProductDTO;
 import com.demo.owlElectronics.model.Customer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(SpringRunner.class)
-@WebMvcTest(OrderController.class)
+@SpringBootTest
+@AutoConfigureMockMvc
 class OrderControllerTest {
 
     @Autowired
@@ -29,7 +28,7 @@ class OrderControllerTest {
     private ObjectMapper mapper;
 
     @Test
-    void contextLoads()throws Exception{
+    void contextLoads(){
         assertThat(controller).isNotNull();
     }
 
@@ -48,12 +47,6 @@ class OrderControllerTest {
         assertEquals(customer.getZipCode(),customerDTO.getZipCode());
     }
 
-    //TODO below test gives following error:
-//    Description:
-//    Field orderRepository in com.demo.owlElectronics.controller.OrderController required a bean of type 'com.demo.owlElectronics.data.OrderRepository' that could not be found.
-//    The injection point has the following annotations:- @org.springframework.beans.factory.annotation.Autowired(required=true)
-//    Action: Consider defining a bean of type 'com.demo.owlElectronics.data.OrderRepository' in your configuration.
-
     @Test
     void placeOrder() throws Exception{
         CustomerDTO customerDTO = getValidCustomerDTO();
@@ -63,23 +56,14 @@ class OrderControllerTest {
         orderDTO.setCustomer(customerDTO);
         orderDTO.setProduct(productDTO);
         String json = mapper.writeValueAsString(orderDTO);
-        mockMvc.perform(post("order/place")
+        mockMvc.perform(post("/order/place")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
-    public static String asJsonString(final Object obj) {
-        try {
-            final ObjectMapper mapper = new ObjectMapper();
-            return mapper.writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private CustomerDTO getValidCustomerDTO(){
+    public CustomerDTO getValidCustomerDTO(){
         CustomerDTO customerDTO = new CustomerDTO();
         customerDTO.setFirstName("firstName");
         customerDTO.setLastName("lastname");
