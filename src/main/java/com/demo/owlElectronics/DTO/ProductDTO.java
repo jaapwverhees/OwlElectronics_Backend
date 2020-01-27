@@ -11,8 +11,6 @@ import java.io.File;
 //lombok functionality that provides boilerplate functionality, in this case getters, setters, toString.
 //https://projectlombok.org/features/all
 //https://projectlombok.org/api/
-//TODO review use @Data
-@ToString
 @NoArgsConstructor
 public class ProductDTO {
     private int productID;

@@ -6,7 +6,6 @@ import lombok.*;
 //lombok functionality that provides boilerplate functionality, in this case getters, setters, toString.
 //https://projectlombok.org/features/all
 //https://projectlombok.org/api/
-//todo review use @Data
 @NoArgsConstructor
 public class CustomerDTO {
     private String firstName;

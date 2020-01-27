@@ -1,11 +1,9 @@
 package com.demo.owlElectronics.model;
-import lombok.Data;
-import lombok.Getter;
 
+import lombok.Data;
 import javax.persistence.*;
 
-@Data//Lombok functionality that provides boilerplate functionality, in this case the Getters and setter of the model
-//todo review use before production
+@Data
 @Entity
 @Table(name = "product")
 public class Product {

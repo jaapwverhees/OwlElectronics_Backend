@@ -7,7 +7,6 @@ import javax.persistence.*;
 //lombok functionality that provides boilerplate functionality, in this case getters, setters, toString.
 //https://projectlombok.org/features/all
 //https://projectlombok.org/api/
-//todo review use @Data
 @Entity
 @Table(name = "customer")
 public class Customer {

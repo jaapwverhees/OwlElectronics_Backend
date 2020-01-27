@@ -1,12 +1,6 @@
 package com.demo.owlElectronics;
 
-import com.demo.owlElectronics.DTO.CustomerDTO;
-import com.demo.owlElectronics.DTO.OrderDTO;
-import com.demo.owlElectronics.DTO.ProductDTO;
-import com.demo.owlElectronics.controller.OrderController;
-
 import com.demo.owlElectronics.controller.ProductController;
-import com.demo.owlElectronics.data.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Component;
@@ -42,6 +36,7 @@ public class AppInitializator {
                 originalFileName, contentType, content);
         productController.setPhoto(productID, result);
     }
+
 
 
 }
