@@ -40,15 +40,15 @@ public class ProductController {
     @PostMapping(value = "/setphoto/{productID}")
     public byte[] setPhoto(@PathVariable int productID, @RequestParam MultipartFile image){
         Product product = productRepository.findById(productID).get();
-        byte[] byteArray= new byte[0];
+    byte[] byteArray= new byte[0];
         try {
-            byteArray = image.getBytes();
-        } catch (IOException e) {
-            //implement error log function
-            return null;
-        }
+        byteArray = image.getBytes();
+    } catch (IOException e) {
+        //implement error log function
+        return null;
+    }
         product.setImage(byteArray);
         productRepository.save(product);
         return product.getImage();
-    }
+}
 }

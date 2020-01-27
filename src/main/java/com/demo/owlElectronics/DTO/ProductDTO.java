@@ -20,5 +20,5 @@ public class ProductDTO {
     private byte[] image;
     // @TODO must become an image, futher research on BLOB (suggestion from erik)
     private String productDescription;
-    private String productPrice;
+    private float productPrice;
 }

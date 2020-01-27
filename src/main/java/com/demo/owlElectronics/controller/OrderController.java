@@ -24,7 +24,7 @@ public class OrderController {
 
     //TODO frond end STUB voor bijv. betalingen.
     @PostMapping(path="/place")
-    public void placeOrder(@RequestBody OrderDTO orderDTO){
+    public void setOrder(@RequestBody OrderDTO orderDTO){
         Product product = productRepository.findById(orderDTO.getProduct().getProductID()).get();
         Customer customer = orderDTOToCustomerTransformer(orderDTO);
         customer = customerRepository.save(customer);

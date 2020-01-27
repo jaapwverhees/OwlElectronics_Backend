@@ -48,7 +48,7 @@ class OrderControllerTest {
     }
 
     @Test
-    void placeOrder() throws Exception{
+    void setOrder() throws Exception{
         CustomerDTO customerDTO = getValidCustomerDTO();
         ProductDTO productDTO = new ProductDTO();
         productDTO.setProductID(1);

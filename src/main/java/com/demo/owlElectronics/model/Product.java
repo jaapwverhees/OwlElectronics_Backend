@@ -34,5 +34,5 @@ public class Product {
     private String productDescription;
 
     @Column(nullable = false, length = 7)
-    private String productPrice;
+    private float productPrice;
 }
