@@ -35,5 +35,5 @@ public class Question {
     private String email;
 
     @Column(nullable = false, length = 600)
-    private String question;
+    private String inputQuestion;
 }
