@@ -4,7 +4,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Setter
+@Data
 //lombok functionality that provides boilerplate functionality, in this case setters
 //https://projectlombok.org/features/all
 //https://projectlombok.org/api/

@@ -37,6 +37,4 @@ public class AppInitializator {
         productController.setPhoto(productID, result);
     }
 
-
-
 }

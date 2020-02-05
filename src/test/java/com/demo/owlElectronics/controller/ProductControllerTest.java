@@ -35,4 +35,9 @@ class ProductControllerTest {
     void findByProductId() throws Exception {
         this.mockMvc.perform(get("/products/single/1")).andExpect(status().isOk());
     }
+
+    @Test
+    void findByName() throws Exception {
+        this.mockMvc.perform(get("/products/searchproduct/arduino")).andExpect(status().isOk());
+    }
 }

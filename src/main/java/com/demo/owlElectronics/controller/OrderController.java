@@ -45,5 +45,4 @@ public class OrderController {
         customer.setFirstName(orderDTO.getCustomer().getFirstName());
         return customer;
     }
-
 }
